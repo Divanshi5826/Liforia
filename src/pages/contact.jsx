@@ -1,77 +1,111 @@
-import { useState } from "react";
-
-export default function Contact() {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
-
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert("✅ Thanks for reaching out! We'll get back to you soon.");
-    setForm({ name: "", email: "", message: "" });
-  };
-
+export default function ContactSection() {
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center p-6">
-      <div className="w-full max-w-lg bg-white dark:bg-gray-800 rounded-2xl shadow-md p-8">
-        <h1 className="text-3xl font-bold text-purple-700 dark:text-purple-400 mb-6">
-          Contact Us
-        </h1>
-        <p className="text-gray-600 dark:text-gray-300 mb-6">
-          Have feedback, suggestions, or just want to say hi? Fill out the form below 👇
-        </p>
+    <section className="relative bg-gray-950 text-white py-20">
+      <div className="container mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-12 items-start">
 
-        <form onSubmit={handleSubmit} className="space-y-5">
-          {/* Name */}
-          <div>
-            <label className="block text-sm font-medium mb-1">Name</label>
-            <input
-              type="text"
-              name="name"
-              value={form.name}
-              onChange={handleChange}
-              required
-              className="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-xl bg-gray-100 dark:bg-gray-900 focus:ring-2 focus:ring-purple-400 outline-none"
-            />
+        {/* LEFT SIDE → Contact Form */}
+        <div className="bg-gray-800/50 backdrop-blur-sm rounded-3xl p-8 border border-gray-600/30 shadow-xl">
+          <h2 className="text-3xl font-bold mb-6">Contact Us</h2>
+          <form className="space-y-6">
+            <div>
+              <label className="block text-sm text-gray-400 mb-2">Your Name</label>
+              <input
+                type="text"
+                placeholder="Enter your name"
+                className="w-full px-4 py-3 rounded-xl bg-gray-900 text-white border border-gray-700 focus:ring-2 focus:ring-purple-500 outline-none"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm text-gray-400 mb-2">Your Email</label>
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="w-full px-4 py-3 rounded-xl bg-gray-900 text-white border border-gray-700 focus:ring-2 focus:ring-purple-500 outline-none"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm text-gray-400 mb-2">Message</label>
+              <textarea
+                placeholder="Write your message..."
+                rows="4"
+                className="w-full px-4 py-3 rounded-xl bg-gray-900 text-white border border-gray-700 focus:ring-2 focus:ring-purple-500 outline-none"
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              className="w-full py-3 rounded-xl bg-gradient-to-r from-purple-500 to-cyan-500 font-bold hover:scale-105 transform transition"
+            >
+              Send Message
+            </button>
+          </form>
+        </div>
+
+        {/* RIGHT SIDE → FAQ */}
+        <div className="bg-gray-800/50 backdrop-blur-sm rounded-3xl p-8 border border-gray-600/30 h-full shadow-xl">
+          <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+            <span>❓</span> Quick Answers
+          </h3>
+          <div className="space-y-6">
+            <div>
+              <div className="text-purple-400 font-semibold text-sm">
+                How do I reset my password?
+              </div>
+              <div className="text-gray-400 text-sm">
+                Visit Settings → Account → Password Reset
+              </div>
+            </div>
+
+            <div>
+              <div className="text-purple-400 font-semibold text-sm">
+                Where are my quest rewards?
+              </div>
+              <div className="text-gray-400 text-sm">
+                Check your Profile → Achievements tab
+              </div>
+            </div>
+
+            <div>
+              <div className="text-purple-400 font-semibold text-sm">
+                How to sync across devices?
+              </div>
+              <div className="text-gray-400 text-sm">
+                Enable Cloud Save in Settings
+              </div>
+            </div>
+
+            <div>
+              <div className="text-purple-400 font-semibold text-sm">
+                Can I change my avatar?
+              </div>
+              <div className="text-gray-400 text-sm">
+                Yes, go to Profile → Customize Avatar
+              </div>
+            </div>
+
+            <div>
+              <div className="text-purple-400 font-semibold text-sm">
+                Do you offer premium plans?
+              </div>
+              <div className="text-gray-400 text-sm">
+                Yes, visit our Pricing section for more info
+              </div>
+            </div>
+
+            <div>
+              <div className="text-purple-400 font-semibold text-sm">
+                How do I contact support?
+              </div>
+              <div className="text-gray-400 text-sm">
+                Use the contact form on this page or email support@lifora.com
+              </div>
+            </div>
           </div>
+        </div>
 
-          {/* Email */}
-          <div>
-            <label className="block text-sm font-medium mb-1">Email</label>
-            <input
-              type="email"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              required
-              className="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-xl bg-gray-100 dark:bg-gray-900 focus:ring-2 focus:ring-purple-400 outline-none"
-            />
-          </div>
-
-          {/* Message */}
-          <div>
-            <label className="block text-sm font-medium mb-1">Message</label>
-            <textarea
-              name="message"
-              value={form.message}
-              onChange={handleChange}
-              rows="4"
-              required
-              className="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-xl bg-gray-100 dark:bg-gray-900 focus:ring-2 focus:ring-purple-400 outline-none"
-            ></textarea>
-          </div>
-
-          {/* Submit Button */}
-          <button
-            type="submit"
-            className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-xl transition"
-          >
-            Send Message 🚀
-          </button>
-        </form>
       </div>
-    </div>
+    </section>
   );
 }
